@@ -1,0 +1,83 @@
+﻿@model IEnumerable<PMS.Models.DbModels.VisitReport>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutMaster.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NewProject.ProjectName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProjectHealth.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProjectStatu.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VisitedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VisitedOn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ActionPlanReportUrl)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.comments)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.notes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProjectPictures)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NewProject.ProjectName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProjectHealth.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProjectStatu.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VisitedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VisitedOn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ActionPlanReportUrl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.comments)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.notes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProjectPictures)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>

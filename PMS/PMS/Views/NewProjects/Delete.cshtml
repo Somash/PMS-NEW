@@ -1,0 +1,209 @@
+﻿@model PMS.Models.DbModels.NewProject
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutMaster.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>NewProject</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Application.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Application.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Architect.FullName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Architect.FullName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BusinessPartner.FullName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BusinessPartner.FullName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FixingType.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FixingType.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Owner.FullName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Owner.FullName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProjectType.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProjectType.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProjectName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProjectName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.City)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.City)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Street)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Street)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CommencedOn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CommencedOn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ConcludedOn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ConcludedOn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PlanUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PlanUrl)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SectionsUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SectionsUrl)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ElevationsUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ElevationsUrl)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TDImageUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TDImageUrl)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AreaPanelCalculationUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AreaPanelCalculationUrl)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ConceptsDrawingUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ConceptsDrawingUrl)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OptimizationUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OptimizationUrl)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShopDrawingUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShopDrawingUrl)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AnalysisUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AnalysisUrl)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BOQUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BOQUrl)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InteriorUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InteriorUrl)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TDRenderImageUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TDRenderImageUrl)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
