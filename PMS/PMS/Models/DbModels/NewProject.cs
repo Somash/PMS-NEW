@@ -38,37 +38,35 @@ namespace PMS.Models.DbModels
 
         public int BusinessPartnerId { get; set; }
 
-        [Required]
+ 
         public string PlanUrl { get; set; }
 
-        [Required]
+    
         public string SectionsUrl { get; set; }
 
-        [Required]
+ 
         public string ElevationsUrl { get; set; }
 
-        [Required]
+ 
         public string TDImageUrl { get; set; }
 
-        [Required]
+ 
         public string AreaPanelCalculationUrl { get; set; }
 
-        [Required]
+
         public string ConceptsDrawingUrl { get; set; }
 
-        [Required]
         public string OptimizationUrl { get; set; }
 
-        [Required]
         public string ShopDrawingUrl { get; set; }
 
-        [Required]
+ 
         public string AnalysisUrl { get; set; }
 
-        [Required]
+    
         public string BOQUrl { get; set; }
 
-        [Required]
+    
         public string InteriorUrl { get; set; }
 
         public int OwnerId { get; set; }
@@ -79,7 +77,6 @@ namespace PMS.Models.DbModels
 
         public int ApplicationsId { get; set; }
 
-        [Required]
         public string TDRenderImageUrl { get; set; }
 
         public virtual Application Application { get; set; }
