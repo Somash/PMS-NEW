@@ -27,6 +27,15 @@ namespace PMS
                       "~/Content/bootstrap.css",
                       //"~/Content/css/style.css",
                       "~/Content/site.css"));
+
+            //bundles.Add(new ScriptBundle("~/bundles/jquery").Include("~/Content/PMS/js/jquery-{version}.js"));
+            //bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include("~/Content/PMS/js/jquery.validate*"));
+            //bundles.Add(new ScriptBundle("~/bundles/modernizr").Include("~/Content/PMS/js/modernizr-*"));
+            //bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include("~/Content/PMS/js/bootstrap.js"
+            //   ));
+            //bundles.Add(new ScriptBundle("~/bundles/css").Include("~/Content/PMS/css/bootstrap.css"
+            //    ));
+
         }
     }
 }

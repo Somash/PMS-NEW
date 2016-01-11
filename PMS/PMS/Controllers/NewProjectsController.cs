@@ -16,8 +16,9 @@ namespace PMS.Controllers
         private Entities db = new Entities();
 
         // GET: NewProjects
-        public async Task<ActionResult> Index()
+        public async Task<ActionResult> Index(string currentFilter, string searchString, int? page)
         {
+
             var newProjects = db.NewProjects.Include(n => n.Application).Include(n => n.Architect).Include(n => n.BusinessPartner).Include(n => n.FixingType).Include(n => n.Owner).Include(n => n.ProjectType);
             return View(await newProjects.ToListAsync());
         }
