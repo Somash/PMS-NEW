@@ -96,5 +96,7 @@ namespace PMS.Models.DbModels
         public virtual Owner Owner { get; set; }
 
         public virtual ProjectType ProjectType { get; set; }
+
+        public string city { get; set; }
     }
 }
