@@ -5,14 +5,14 @@ namespace PMS.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<PMS.Models.DbModels.Entities>
+    internal sealed class Configuration : DbMigrationsConfiguration<PMS.Models.ApplicationDbContext>
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(PMS.Models.DbModels.Entities context)
+        protected override void Seed(PMS.Models.ApplicationDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 
