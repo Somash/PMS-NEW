@@ -5,7 +5,9 @@ namespace PMS.Models.DbModels
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
+    using System.Web.Mvc;
 
+    [Authorize]
     public partial class Checklist
     {
         public int Id { get; set; }

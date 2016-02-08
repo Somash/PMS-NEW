@@ -13,32 +13,33 @@ using PMS.Helpers;
 
 namespace PMS.Controllers
 {
+    [Authorize]
     public class NewProjectsController : Controller
     {
         private Entities db = new Entities();
 
         // GET: NewProjects
-        public ActionResult Index(string searchProject, String searchCity)        
+        public ActionResult Index(string searchProject, String searchCity)
         {
 
             var CityLst = new List<string>();
 
             var CityQry = from d in db.NewProjects
-                           orderby d.City
-                           select d.City;
+                          orderby d.City
+                          select d.City;
 
-            CityLst.AddRange(CityQry.Distinct());           
-            
-            ViewBag.searchCity = new SelectList(CityLst);            
+            CityLst.AddRange(CityQry.Distinct());
+
+            ViewBag.searchCity = new SelectList(CityLst);
 
             //var newProjects = db.NewProjects.Include(n => n.Application).Include(n => n.Architect).Include(n => n.BusinessPartner).Include(n => n.FixingType).Include(n => n.Owner).Include(n => n.ProjectType);
 
             var searchString = from m in db.NewProjects
-                                      select m;
+                               select m;
 
             if (!String.IsNullOrEmpty(searchProject))
             {
-                searchString = searchString.Where(s => s.ProjectName.Contains(searchProject));                
+                searchString = searchString.Where(s => s.ProjectName.Contains(searchProject));
             }
 
             if (!string.IsNullOrEmpty(searchCity))

@@ -4,7 +4,9 @@ namespace PMS.Models.DbModels
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
+    using System.Web.Mvc;
 
+    [Authorize]
     public partial class Entities : DbContext
     {
         public Entities()

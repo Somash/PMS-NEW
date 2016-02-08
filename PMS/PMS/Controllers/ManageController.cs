@@ -9,8 +9,7 @@ using Microsoft.Owin.Security;
 using PMS.Models;
 
 namespace PMS.Controllers
-{
-    [Authorize]
+{    
     public class ManageController : Controller
     {
         private ApplicationSignInManager _signInManager;

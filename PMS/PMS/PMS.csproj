@@ -614,6 +614,7 @@
     <Content Include="Views\VisitReports\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutMaster.cshtml" />
     <Content Include="Views\AutoComplete\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutCustomizedLogin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
