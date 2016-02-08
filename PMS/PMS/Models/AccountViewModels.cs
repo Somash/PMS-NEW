@@ -51,11 +51,9 @@ namespace PMS.Models
         [Required]
         [Display(Name = "UserName")]
         public string UserName { get; set; }
-
-        [Required]
+                
         [EmailAddress]
         public string Email { get; set; }
-
 
         [Required]
         [DataType(DataType.Password)]

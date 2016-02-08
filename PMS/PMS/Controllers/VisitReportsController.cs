@@ -11,6 +11,7 @@ using PMS.Models.DbModels;
 
 namespace PMS.Controllers
 {
+    [Authorize]
     public class VisitReportsController : Controller
     {
         private Entities db = new Entities();
