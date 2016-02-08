@@ -207,3 +207,5 @@ C:\Users\Extreme\Documents\Visual Studio 2015\Projects\PMS-NEW\PMS\PMS\obj\Debug
 C:\Users\Extreme\Documents\Visual Studio 2015\Projects\PMS-NEW\PMS\PMS\obj\Debug\PMS.pdb
 C:\Users\ashwin.sriram\GNS3\projects\PMS-NEW\PMS\PMS\obj\Debug\PMS.Migrations.Init.resources
 C:\Users\ashwin.sriram\GNS3\projects\PMS-NEW\PMS\PMS\obj\Debug\PMS.csproj.GenerateResource.Cache
+C:\Users\Extreme\Documents\Visual Studio 2015\Projects\PMS-NEW\PMS\PMS\obj\Debug\PMS.Migrations.Init.resources
+C:\Users\Extreme\Documents\Visual Studio 2015\Projects\PMS-NEW\PMS\PMS\obj\Debug\PMS.csproj.GenerateResource.Cache
