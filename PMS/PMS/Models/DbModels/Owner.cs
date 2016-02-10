@@ -19,7 +19,7 @@ namespace PMS.Models.DbModels
         public int Id { get; set; }
 
         [Required]
-        [Display(Name = "Owner Name:")]
+        [Display(Name = "Owner Name")]
         public string FullName { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

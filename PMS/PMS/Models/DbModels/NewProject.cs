@@ -59,7 +59,7 @@ namespace PMS.Models.DbModels
         [Display(Name = "3DImage")]
         public string TDImageUrl { get; set; }
 
-        [Display(Name = "AreaPanel Calculations")] 
+        [Display(Name = "AreaPanel Calc.")] 
         public string AreaPanelCalculationUrl { get; set; }
 
         [Display(Name = "Concepts Drawings")] 
@@ -74,10 +74,10 @@ namespace PMS.Models.DbModels
         [Display(Name = "Analysis")] 
         public string AnalysisUrl { get; set; }
 
-        [Display(Name = "BOQ:")] 
+        [Display(Name = "BOQ")] 
         public string BOQUrl { get; set; }
 
-        [Display(Name = "Interior:")] 
+        [Display(Name = "Interior")] 
         public string InteriorUrl { get; set; }
 
         [Required]
