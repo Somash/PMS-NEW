@@ -181,6 +181,11 @@ namespace PMS.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult Report()
+        {
+            return View();
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
