@@ -214,3 +214,5 @@ C:\Users\ashwin.sriram\GNS3\projects\PMS-NEW\PMS\PMS\bin\System.Web.Http.dll
 C:\Users\ashwin.sriram\GNS3\projects\PMS-NEW\PMS\PMS\bin\System.Net.Http.Formatting.dll
 C:\Users\ashwin.sriram\GNS3\projects\PMS-NEW\PMS\PMS\bin\System.Web.Http.xml
 C:\Users\ashwin.sriram\GNS3\projects\PMS-NEW\PMS\PMS\bin\System.Net.Http.Formatting.xml
+C:\Users\ashwin.sriram\GNS3\projects\PMS-NEW\PMS\PMS\bin\Rotativa.dll
+C:\Users\ashwin.sriram\GNS3\projects\PMS-NEW\PMS\PMS\bin\ReportViewerForMvc.dll

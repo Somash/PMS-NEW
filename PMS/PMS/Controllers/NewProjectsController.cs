@@ -9,6 +9,9 @@ using System.Web;
 using System.Web.Mvc;
 using PMS.Models.DbModels;
 using PMS.Helpers;
+using Rotativa;
+using System.Drawing;
+using Rotativa.Options;
 
 
 namespace PMS.Controllers
@@ -183,8 +186,46 @@ namespace PMS.Controllers
 
         public ActionResult Report()
         {
-            return View();
+            Entities db = new Entities();
+            var Model = db.NewProjects;
+            ViewBag.logoPath = "~/Content/logo.png";
+            return new ViewAsPdf(Model)
+            {
+                FileName = "AllProject.pdf",
+                CustomSwitches = "--print-media-type --header-center \"MYTEXT\"",
+                PageSize = Rotativa.Options.Size.A4,
+                PageOrientation = Orientation.Portrait,
+                PageMargins = { Left = 10, Right = 10 }
+
+            };
         }
+
+        public async Task<ActionResult> ReportDetails(int? id)
+        {
+            
+            Entities db = new Entities();
+            var model = db.NewProjects;
+
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            NewProject newProject = await db.NewProjects.FindAsync(id);
+            
+            if (newProject == null)
+            {
+                return HttpNotFound();
+            }
+
+            ViewBag.logoPath = "~/Content/logo.png";
+            return new ViewAsPdf(newProject) {
+                FileName = "AllProject.pdf",
+                CustomSwitches = "--print-media-type --header-center \"MYTEXT\"",
+                
+            };                
+        }
+
 
         protected override void Dispose(bool disposing)
         {

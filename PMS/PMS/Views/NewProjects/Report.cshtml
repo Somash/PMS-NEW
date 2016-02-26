@@ -1,5 +1,66 @@
-﻿@{
-    ViewBag.Title = "Report";
-        
+﻿@model IEnumerable<PMS.Models.DbModels.NewProject>
+
+@{
+    ViewBag.Title = "All Project Information";
+    Layout = "~/Views/Shared/_LayoutMaster.cshtml";
+    
 }
-<h2>RPTReport</h2>
+
+<h2>Report</h2>
+
+<div class="row">
+    <div class=" col-xs-12">
+        <div class="pull-right">
+            <img src="@Url.Content(ViewBag.logoPath)" alt="FunderMax_Logo" style="width:145px;height:29px;">
+        </div>
+    </div>
+</div>
+ <br>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Project Name")
+        </th>
+
+        <th>
+            @Html.DisplayName("Owner")
+        </th>
+        <th>
+            @Html.DisplayName("City")
+        </th>
+
+        <th>
+            @Html.DisplayName("CommencedOn")
+        </th>
+
+        <th>
+            @Html.DisplayName("BusinessPartner")
+        </th>
+
+    </tr>
+
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProjectName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Owner.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CommencedOn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BusinessPartner.FullName)
+            </td>
+        </tr>
+    }
+</table>
+
+<div class="page-breaker"> </div>

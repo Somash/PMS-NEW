@@ -59,7 +59,10 @@
     </Reference>
     <Reference Include="Microsoft.ReportViewer.WebForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <Private>True</Private>
-      <HintPath>..\packages\Microsoft.Report.Viewer.11.0.0.0\lib\net\Microsoft.ReportViewer.WebForms.DLL</HintPath>
+      <HintPath>..\packages\MicosoftReportViewerWebForms_v11.1.0.1\lib\Microsoft.ReportViewer.WebForms.DLL</HintPath>
+    </Reference>
+    <Reference Include="ReportViewerForMvc">
+      <HintPath>..\packages\ReportViewerForMvc.1.0.1\lib\net45\ReportViewerForMvc.dll</HintPath>
     </Reference>
     <Reference Include="Rotativa">
       <HintPath>..\packages\Rotativa.1.6.4\lib\net40\Rotativa.dll</HintPath>
@@ -213,11 +216,11 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Views\Shared\ReportViwerASPX.aspx.cs">
+    <Compile Include="Views\NewProjects\ReportViwerASPX.aspx.cs">
       <DependentUpon>ReportViwerASPX.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\Shared\ReportViwerASPX.aspx.designer.cs">
+    <Compile Include="Views\NewProjects\ReportViwerASPX.aspx.designer.cs">
       <DependentUpon>ReportViwerASPX.aspx</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
@@ -564,8 +567,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="ReportViewerWebForm.aspx" />
     <Content Include="Rotativa\wkhtmltopdf.exe" />
-    <Content Include="Views\Shared\ReportViwerASPX.aspx" />
+    <Content Include="Views\NewProjects\ReportViwerASPX.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\font\fontawesome-webfont-0.eot" />
@@ -660,6 +664,7 @@
     <Content Include="Views\AutoComplete\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutCustomizedLogin.cshtml" />
     <Content Include="Views\NewProjects\Report.cshtml" />
+    <Content Include="Views\NewProjects\ReportDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

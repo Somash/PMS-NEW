@@ -4971,6 +4971,12 @@ textarea.input-group-sm > .input-group-btn > .btn {
     border-bottom-right-radius: 3px;
 }
 
+.page-breaker {
+ display: block;
+ clear: both;
+ page-break-after: always;
+ }
+
 .pager {
     padding-left: 0;
     margin: 20px 0;

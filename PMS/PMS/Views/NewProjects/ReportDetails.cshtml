@@ -1,22 +1,23 @@
 ﻿@model PMS.Models.DbModels.NewProject
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "All Project Information";
     Layout = "~/Views/Shared/_LayoutMaster.cshtml";
 }
 
-<h2>Details</h2>
+<h2>Report</h2>
 
-@*<div class="row">
+<div class="row">
     <div class=" col-xs-12">
         <div class="pull-right">
-            @Html.ActionLink("Report PDF", "Report", "NewProjects", null, new { @class = "btn btn-primary", @style = "color:white" })
+            <img src="@Url.Content(ViewBag.logoPath)" alt="FunderMax_Logo" style="width:145px;height:29px;">
         </div>
     </div>
-</div>*@
+</div>
+ <br>
 
 <div>
-    <h4>NewProject</h4>
+    <h4>Project Details</h4>
     <hr />
 
     <dl class="dl-horizontal">
@@ -207,10 +208,6 @@
 
     </dl>
 </div>
-@Html.ActionLink("Report PDF", "ReportDetails", new { id = Model.Id })
 
-<p>
-  
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+
