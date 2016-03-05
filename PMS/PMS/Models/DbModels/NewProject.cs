@@ -117,13 +117,13 @@ namespace PMS.Models.DbModels
 
         public virtual ProjectType ProjectType { get; set; }
 
-        public string city { get; set; }
+        //public string city { get; set; }
     }
 
-    public class NewProjectDBContext : DbContext
-    {
-        public DbSet<NewProject> NewProject { get; set; }
-    
-    }
+    //public class NewProjectDBContext : DbContext
+    //{
+    //    public DbSet<NewProject> NewProject { get; set; }
+
+    //}
 
 }
