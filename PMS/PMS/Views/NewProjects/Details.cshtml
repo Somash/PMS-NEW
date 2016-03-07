@@ -7,6 +7,14 @@
 
 <h2>Details</h2>
 
+@*<div class="row">
+        <div class=" col-xs-12">
+            <div class="pull-right">
+                @Html.ActionLink("Report PDF", "Report", "NewProjects", null, new { @class = "btn btn-primary", @style = "color:white" })
+            </div>
+        </div>
+    </div>*@
+
 <div>
     <h4>NewProject</h4>
     <hr />
@@ -106,7 +114,15 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.PlanUrl)
+            @if (!String.IsNullOrEmpty(Model.PlanUrl))
+            {
+                @Html.ActionLink("Download", "Download", new { filepath = Model.PlanUrl })
+            }
+            else
+            {
+                @Html.DisplayFor(model => model.PlanUrl)
+            }
+          
         </dd>
 
         <dt>
@@ -114,7 +130,16 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.SectionsUrl)
+            @if (!String.IsNullOrEmpty(Model.SectionsUrl))
+            {
+                @Html.ActionLink("Download", "Download", new { filepath = Model.SectionsUrl })
+            }
+            else
+            {
+                @Html.DisplayFor(model => model.SectionsUrl)
+            }
+            
+
         </dd>
 
         <dt>
@@ -122,7 +147,16 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ElevationsUrl)
+            @if (!String.IsNullOrEmpty(Model.ElevationsUrl))
+            {
+                @Html.ActionLink("Download", "Download", new { filepath = Model.ElevationsUrl })
+            }
+            else
+            {
+                @Html.DisplayFor(model => model.ElevationsUrl)
+            }
+            
+
         </dd>
 
         <dt>
@@ -130,7 +164,16 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.TDImageUrl)
+            @if (!String.IsNullOrEmpty(Model.TDImageUrl))
+            {
+                @Html.ActionLink("Download", "Download", new { filepath = Model.TDImageUrl })
+            }
+            else
+            {
+                @Html.DisplayFor(model => model.TDImageUrl)
+            }
+            
+
         </dd>
 
         <dt>
@@ -138,7 +181,16 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.AreaPanelCalculationUrl)
+            @if (!String.IsNullOrEmpty(Model.AreaPanelCalculationUrl))
+            {
+                @Html.ActionLink("Download", "Download", new { filepath = Model.AreaPanelCalculationUrl })
+            }
+            else
+            {
+                @Html.DisplayFor(model => model.AreaPanelCalculationUrl)
+            }
+            
+
         </dd>
 
         <dt>
@@ -146,7 +198,16 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ConceptsDrawingUrl)
+            @if (!String.IsNullOrEmpty(Model.ConceptsDrawingUrl))
+            {
+                @Html.ActionLink("Download", "Download", new { filepath = Model.ConceptsDrawingUrl })
+            }
+            else
+            {
+                @Html.DisplayFor(model => model.ConceptsDrawingUrl)
+            }
+            
+
         </dd>
 
         <dt>
@@ -154,7 +215,16 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.OptimizationUrl)
+            @if (!String.IsNullOrEmpty(Model.OptimizationUrl))
+            {
+                @Html.ActionLink("Download", "Download", new { filepath = Model.OptimizationUrl })
+            }
+            else
+            {
+                @Html.DisplayFor(model => model.OptimizationUrl)
+            }
+            
+
         </dd>
 
         <dt>
@@ -162,7 +232,16 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ShopDrawingUrl)
+            @if (!String.IsNullOrEmpty(Model.ShopDrawingUrl))
+            {
+                @Html.ActionLink("Download", "Download", new { filepath = Model.ShopDrawingUrl })
+            }
+            else
+            {
+                @Html.DisplayFor(model => model.ShopDrawingUrl)
+            }
+            
+
         </dd>
 
         <dt>
@@ -170,7 +249,15 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.AnalysisUrl)
+            @if (!String.IsNullOrEmpty(Model.AnalysisUrl))
+            {
+                @Html.ActionLink("Download", "Download", new { filepath = Model.AnalysisUrl })
+            }
+            else
+            {
+                @Html.DisplayFor(model => model.AnalysisUrl)
+            }
+            
         </dd>
 
         <dt>
@@ -178,7 +265,16 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.BOQUrl)
+            @if (!String.IsNullOrEmpty(Model.BOQUrl))
+            {
+                @Html.ActionLink("Download", "Download", new { filepath = Model.BOQUrl })
+            }
+            else
+            {
+                @Html.DisplayFor(model => model.BOQUrl)
+            }
+            
+
         </dd>
 
         <dt>
@@ -186,7 +282,15 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.InteriorUrl)
+            @if (!String.IsNullOrEmpty(Model.InteriorUrl))
+            {
+                @Html.ActionLink("Download", "Download", new { filepath = Model.InteriorUrl })
+            }
+            else
+            {
+                @Html.DisplayFor(model => model.InteriorUrl)
+            }
+
         </dd>
 
         <dt>
@@ -194,7 +298,16 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.TDRenderImageUrl)
+            @if (!String.IsNullOrEmpty(Model.TDRenderImageUrl))
+            {
+                @Html.ActionLink("Download", "Download", new { filepath = Model.TDRenderImageUrl })
+            }
+            else
+            {
+                @Html.DisplayFor(model => model.TDRenderImageUrl)
+            }
+            
+
         </dd>
 
     </dl>
@@ -202,7 +315,7 @@
 @Html.ActionLink("Report PDF", "ReportDetails", new { id = Model.Id })
 
 <p>
-  
+
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

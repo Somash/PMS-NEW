@@ -12,8 +12,7 @@ using PMS.Helpers;
 using Rotativa;
 using System.Drawing;
 using Rotativa.Options;
-using PagedList;
-
+using System.IO;
 
 namespace PMS.Controllers
 {
@@ -48,10 +47,10 @@ namespace PMS.Controllers
 
             if (!string.IsNullOrEmpty(searchCity))
             {
-                searchString = searchString.Where(x => x.city == searchCity);
+                searchString = searchString.Where(x => x.City == searchCity);
             }
 
-            return View(searchString);
+            return View(searchString.OrderByDescending(t => t.Id));
         }
 
         // GET: NewProjects/Details/5
@@ -206,22 +205,37 @@ namespace PMS.Controllers
 
             Entities db = new Entities();
             var model = db.NewProjects;
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             NewProject newProject = await db.NewProjects.FindAsync(id);
+
             if (newProject == null)
             {
                 return HttpNotFound();
             }
+
             ViewBag.logoPath = "~/Content/logo.png";
-            return new ViewAsPdf("Details" , newProject)
+            return new ViewAsPdf(newProject)
             {
                 FileName = "AllProject.pdf",
                 CustomSwitches = "--print-media-type --header-center \"MYTEXT\"",
 
             };
+        }
+
+        public ActionResult Download(string filepath)
+        {
+            if (System.IO.File.Exists(filepath))
+            {
+                byte[] fileBytes = System.IO.File.ReadAllBytes(filepath);
+                string filename = Path.GetFileName(filepath);
+                return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, filename);
+            }
+            return null;
         }
 
 
