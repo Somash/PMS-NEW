@@ -12,6 +12,7 @@ using PMS.Helpers;
 using Rotativa;
 using System.Drawing;
 using Rotativa.Options;
+using PagedList;
 
 
 namespace PMS.Controllers
@@ -202,28 +203,25 @@ namespace PMS.Controllers
 
         public async Task<ActionResult> ReportDetails(int? id)
         {
-            
+
             Entities db = new Entities();
             var model = db.NewProjects;
-
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-
             NewProject newProject = await db.NewProjects.FindAsync(id);
-            
             if (newProject == null)
             {
                 return HttpNotFound();
             }
-
             ViewBag.logoPath = "~/Content/logo.png";
-            return new ViewAsPdf(newProject) {
+            return new ViewAsPdf("Details" , newProject)
+            {
                 FileName = "AllProject.pdf",
                 CustomSwitches = "--print-media-type --header-center \"MYTEXT\"",
-                
-            };                
+
+            };
         }
 
 

@@ -609,45 +609,14 @@ ol {
     }
 
 /*DL, DT, DD TAGS LIST DATA*/
+
 dl {
-    margin-bottom: 20px;
-}
-
-dt,
-dd {
-    line-height: 1.428571429;
-}
-
-dt {
-    font-weight: bold;
-}
-
-dd {
-  margin-left: 0;
-}
-
-dl dt {
-    background: #5f9be3;
-    color: #fff;
-    float: right;    
-    font-weight: bold;
-    margin-right: 10px;
-    padding: 5px;
-    width: 100px;
-}
-
-dl dd {
-    margin: 2px 0;
-    padding: 5px 0;
-}
-
-/*dl {
   margin-bottom: 20px;
 }
 
 dt,
 dd {
-  line-height: 1.428571429;
+  line-height: 3;
 }
 
 dt {
@@ -656,7 +625,8 @@ dt {
 
 dd {
   margin-left: 0;
-}*/
+}
+
 
 @media (min-width: 768px) {
     .dl-horizontal dt {
@@ -670,7 +640,7 @@ dd {
     }
 
     .dl-horizontal dd {
-        margin-left: 180px;
+        margin-left: 200px;
     }
 
         .dl-horizontal dd:before,
