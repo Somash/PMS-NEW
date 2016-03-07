@@ -49,40 +49,51 @@ namespace PMS.Models.DbModels
         public int BusinessPartnerId { get; set; }
 
         [Display(Name = "Plan")]
+        [DisplayFormat(NullDisplayText = "Not Available")]
         public string PlanUrl { get; set; }
 
         [Display(Name = "Sections")]
+        [DisplayFormat(NullDisplayText = "Not Available")]
         public string SectionsUrl { get; set; }
 
         [Display(Name = "Elevations")]
+        [DisplayFormat(NullDisplayText = "Not Available")]
         public string ElevationsUrl { get; set; }
 
         [Display(Name = "3DImage")]
+        [DisplayFormat(NullDisplayText = "Not Available")]
         public string TDImageUrl { get; set; }
 
         [Display(Name = "AreaPanel Calc.")]
+        [DisplayFormat(NullDisplayText = "Not Available")]
         public string AreaPanelCalculationUrl { get; set; }
 
         [Display(Name = "Concepts Drawings")]
+        [DisplayFormat(NullDisplayText = "Not Available")]
         public string ConceptsDrawingUrl { get; set; }
 
         [Display(Name = "Optimization")]
+        [DisplayFormat(NullDisplayText = "Not Available")]
         public string OptimizationUrl { get; set; }
 
         [Display(Name = "ShopDrawing")]
+        [DisplayFormat(NullDisplayText = "Not Available")]
         public string ShopDrawingUrl { get; set; }
 
         [Display(Name = "Analysis")]
+        [DisplayFormat(NullDisplayText = "Not Available")]
         public string AnalysisUrl { get; set; }
 
         [Display(Name = "BOQ")]
+        [DisplayFormat(NullDisplayText = "Not Available")]
         public string BOQUrl { get; set; }
 
         [Display(Name = "Interior")]
+        [DisplayFormat(NullDisplayText = "Not Available")]
         public string InteriorUrl { get; set; }
 
         [Required]
-        [Display(Name = "Owners")]
+        [Display(Name = "Owners")]        
         public int OwnerId { get; set; }
 
         [Required]
@@ -97,6 +108,7 @@ namespace PMS.Models.DbModels
         public int ApplicationsId { get; set; }
 
         [Display(Name = "3DRenderImage")]
+        [DisplayFormat(NullDisplayText = "Not Available")]
         public string TDRenderImageUrl { get; set; }
 
         public virtual Application Application { get; set; }

@@ -202,28 +202,23 @@ namespace PMS.Controllers
 
         public async Task<ActionResult> ReportDetails(int? id)
         {
-
-            Entities db = new Entities();
-            var model = db.NewProjects;
-
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-
             NewProject newProject = await db.NewProjects.FindAsync(id);
-
             if (newProject == null)
             {
                 return HttpNotFound();
             }
-
             ViewBag.logoPath = "~/Content/logo.png";
             return new ViewAsPdf(newProject)
             {
                 FileName = "AllProject.pdf",
-                CustomSwitches = "--print-media-type --header-center \"MYTEXT\"",
-
+                PageOrientation = Rotativa.Options.Orientation.Portrait,
+                PageSize = Rotativa.Options.Size.A4,
+                //CustomSwitches = "--print-media-type --header-center \"Project Information\"",
+                CustomSwitches = "--footer-center \"Name: " + "Project Information of: " + newProject.ProjectName + "  DOS: " + DateTime.Now.Date.ToString("MM/dd/yyyy") + "  Page: [page]/[toPage]\"" + " --footer-line --footer-font-size \"9\" --footer-spacing 6 --footer-font-name \"calibri light\""
             };
         }
 
@@ -237,7 +232,6 @@ namespace PMS.Controllers
             }
             return null;
         }
-
 
         protected override void Dispose(bool disposing)
         {

@@ -7,21 +7,20 @@
 
 <h2>Report</h2>
 
-@*<div class="row">
+<div class="row">
     <div class=" col-xs-12">
         <div class="pull-right">
             <img src="@Url.Content(ViewBag.logoPath)" alt="FunderMax_Logo" style="width:145px;height:29px;">
         </div>
     </div>
-</div>*@
+</div>
 
 
 <div>
-    <h4>Project Details</h4>
+    <h4>@Model.ProjectName Project Details</h4>
     <hr />
 
     <dl class="dl-horizontal">
-
         <dt>
             @Html.DisplayNameFor(model => model.ProjectName)
         </dt>
@@ -115,15 +114,28 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.PlanUrl)
+            @if (!String.IsNullOrEmpty(Model.PlanUrl))
+            {
+                @Html.ActionLink("PlanDiagram", "Download", new { filepath = Model.PlanUrl })
+            }
+            else
+            {
+                @Html.DisplayFor(model => model.PlanUrl)
+            }
         </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.SectionsUrl)
         </dt>
-
         <dd>
-            @Html.DisplayFor(model => model.SectionsUrl)
+            @if (!String.IsNullOrEmpty(Model.SectionsUrl))
+            {
+                @Html.ActionLink("SectionsDiagram", "Download", new { filepath = Model.SectionsUrl })
+            }
+            else
+            {
+                @Html.DisplayFor(model => model.SectionsUrl)
+            }
         </dd>
 
         <dt>
@@ -131,15 +143,28 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ElevationsUrl)
+            @if (!String.IsNullOrEmpty(Model.ElevationsUrl))
+            {
+                @Html.ActionLink("ElevationsDiagram", "Download", new { filepath = Model.ElevationsUrl })
+            }
+            else
+            {
+                @Html.DisplayFor(model => model.ElevationsUrl)
+            }
         </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.TDImageUrl)
         </dt>
-
         <dd>
-            @Html.DisplayFor(model => model.TDImageUrl)
+            @if (!String.IsNullOrEmpty(Model.TDImageUrl))
+            {
+                @Html.ActionLink("3DImageDiagram", "Download", new { filepath = Model.TDImageUrl })
+            }
+            else
+            {
+                @Html.DisplayFor(model => model.TDImageUrl)
+            }
         </dd>
 
         <dt>
@@ -147,7 +172,14 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.AreaPanelCalculationUrl)
+            @if (!String.IsNullOrEmpty(Model.AreaPanelCalculationUrl))
+            {
+                @Html.ActionLink("AreaPanelCalc.Diagram", "Download", new { filepath = Model.AreaPanelCalculationUrl })
+            }
+            else
+            {
+                @Html.DisplayFor(model => model.AreaPanelCalculationUrl)
+            }
         </dd>
 
         <dt>
@@ -155,15 +187,28 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ConceptsDrawingUrl)
+            @if (!String.IsNullOrEmpty(Model.ConceptsDrawingUrl))
+            {
+                @Html.ActionLink("ConceptsDiagram", "Download", new { filepath = Model.ConceptsDrawingUrl })
+            }
+            else
+            {
+                @Html.DisplayFor(model => model.ConceptsDrawingUrl)
+            }
         </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.OptimizationUrl)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.OptimizationUrl)
+            @if (!String.IsNullOrEmpty(Model.OptimizationUrl))
+            {
+                @Html.ActionLink("OptimizationDiagram", "Download", new { filepath = Model.OptimizationUrl })
+            }
+            else
+            {
+                @Html.DisplayFor(model => model.OptimizationUrl)
+            }
         </dd>
 
         <dt>
@@ -171,7 +216,14 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ShopDrawingUrl)
+            @if (!String.IsNullOrEmpty(Model.ShopDrawingUrl))
+            {
+                @Html.ActionLink("ShopDiagram", "Download", new { filepath = Model.ShopDrawingUrl })
+            }
+            else
+            {
+                @Html.DisplayFor(model => model.ShopDrawingUrl)
+            }
         </dd>
 
         <dt>
@@ -179,33 +231,58 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.AnalysisUrl)
-        </dd>
+            @if (!String.IsNullOrEmpty(Model.AnalysisUrl))
+            {
+                @Html.ActionLink("AnalysisDiagram", "Download", new { filepath = Model.AnalysisUrl })
+            }
+            else
+            {
+                @Html.DisplayFor(model => model.AnalysisUrl)
+            }
 
+        </dd>
         <dt>
             @Html.DisplayNameFor(model => model.BOQUrl)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.BOQUrl)
+            @if (!String.IsNullOrEmpty(Model.BOQUrl))
+            {
+                @Html.ActionLink("BOQDiagram", "Download", new { filepath = Model.BOQUrl })
+            }
+            else
+            {
+                @Html.DisplayFor(model => model.BOQUrl)
+            }
         </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.InteriorUrl)
         </dt>
-
         <dd>
-            @Html.DisplayFor(model => model.InteriorUrl)
+            @if (!String.IsNullOrEmpty(Model.InteriorUrl))
+            {
+                @Html.ActionLink("InteriorDiagram", "Download", new { filepath = Model.InteriorUrl })
+            }
+            else
+            {
+                @Html.DisplayFor(model => model.InteriorUrl)
+            }
         </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.TDRenderImageUrl)
         </dt>
-
         <dd>
-            @Html.DisplayFor(model => model.TDRenderImageUrl)
+            @if (!String.IsNullOrEmpty(Model.TDRenderImageUrl))
+            {
+                @Html.ActionLink("3DRenderDiagram", "Download", new { filepath = Model.TDRenderImageUrl })
+            }
+            else
+            {
+                @Html.DisplayFor(model => model.TDRenderImageUrl)
+            }
         </dd>
-
     </dl>
 </div>
 

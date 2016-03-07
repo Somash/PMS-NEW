@@ -611,20 +611,31 @@ ol {
 /*DL, DT, DD TAGS LIST DATA*/
 
 dl {
-  margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 
 dt,
 dd {
-  line-height: 3;
+    line-height: 3;
 }
 
 dt {
-  font-weight: bold;
+    float: left;
+    clear: left;
+    font-weight: bold;
+    text-decoration: underline;
+    text-align: right;
+    
 }
 
+dt:after {
+    content: ":";
+  }
+
+
 dd {
-  margin-left: 0;
+    margin: 0 0 0 150px;
+    padding: 0 0 0.5em 0;
 }
 
 
@@ -4942,10 +4953,10 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .page-breaker {
- display: block;
- clear: both;
- page-break-after: always;
- }
+    display: block;
+    clear: both;
+    page-break-after: always;
+}
 
 .pager {
     padding-left: 0;

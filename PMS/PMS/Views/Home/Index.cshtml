@@ -1,11 +1,13 @@
 ﻿@{
     ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_LayoutCustomizedLogin.cshtml";
 }
 
 <div class="jumbotron">
     <h1>FunderMax- Project Management System</h1>
     <p class="lead">PMS(Project Management System) is a web application designed for Project Design Engineers and Project Quality Engineers. </p>
-    <p><a href="https://fundermax.at" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    @*<p><a href="https://fundermax.at" class="btn btn-primary btn-lg">GoTo Application &raquo;</a></p>*@
+    <p>@Html.ActionLink("GoTo Application >>","Index", "NewProjects",null, new { @class = "btn btn-primary", @style = "color:white" }) </p>
 </div>
 
 @*<div class="row">

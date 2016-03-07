@@ -28,19 +28,22 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("AllProjects", "Index", "NewProjects")</li>
-                    <li>@Html.ActionLink("NewProjects", "Create", "NewProjects")</li>
-                    <li>@Html.ActionLink("NewVisitReports", "Create", "VisitReports")</li>
+                    <li>@Html.ActionLink("NewProject", "Create", "NewProjects")</li>
+                    <li>@Html.ActionLink("NewVisit", "Create", "VisitReports")</li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Add NewItem <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>@Html.ActionLink("BusinessPartner", "Index", "BusinessPartners")</li>
+                            <li>@Html.ActionLink("Architect", "Index", "Architects")</li>
+                            <li>@Html.ActionLink("Owner", "Index", "Owners")</li>
+                        </ul>
+                    </li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
- 
-    
-    
-    
-    
-       <div class="container body-content">
+    <div class="container body-content">
         @RenderBody()
         <hr />
         <footer>
