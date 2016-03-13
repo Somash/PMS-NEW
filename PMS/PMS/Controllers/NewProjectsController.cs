@@ -13,7 +13,7 @@ using Rotativa;
 using System.Drawing;
 using Rotativa.Options;
 using System.IO;
-
+using PagedList;
 namespace PMS.Controllers
 {
     [Authorize]
@@ -22,7 +22,7 @@ namespace PMS.Controllers
         private Entities db = new Entities();
 
         // GET: NewProjects
-        public ActionResult Index(string searchProject, String searchCity)
+        public ViewResult Index(string searchProject, String searchCity, int PageNumber = 1, int PageSize = 15)
         {
 
             var CityLst = new List<string>();
@@ -37,8 +37,10 @@ namespace PMS.Controllers
 
             //var newProjects = db.NewProjects.Include(n => n.Application).Include(n => n.Architect).Include(n => n.BusinessPartner).Include(n => n.FixingType).Include(n => n.Owner).Include(n => n.ProjectType);
 
-            var searchString = from m in db.NewProjects
-                               select m;
+            //var searchString = from m in db.NewProjects
+            //                   select m;
+
+            var searchString = db.NewProjects.OrderByDescending(r => r.Id).Skip((PageNumber - 1) * PageSize).Take(PageSize).AsQueryable();
 
             if (!String.IsNullOrEmpty(searchProject))
             {
@@ -49,8 +51,7 @@ namespace PMS.Controllers
             {
                 searchString = searchString.Where(x => x.City == searchCity);
             }
-
-            return View(searchString.OrderByDescending(t => t.Id));
+            return View(searchString.ToPagedList(PageNumber, PageSize));
         }
 
         // GET: NewProjects/Details/5

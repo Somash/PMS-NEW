@@ -1,6 +1,8 @@
-﻿@model IEnumerable<PMS.Models.DbModels.NewProject>
+﻿@*@model IEnumerable<PMS.Models.DbModels.NewProject>*@
 
-@using PagedList;
+@model PagedList.IPagedList<PMS.Models.DbModels.NewProject>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 
 @{
@@ -13,12 +15,12 @@
 <div class="row">
     <div class=" col-xs-12">
         <div class="pull-right">
-            @Html.ActionLink("Report PDF", "Report","NewProjects",null, new { @class = "btn btn-primary", @style = "color:white" })
+            @Html.ActionLink("Report PDF", "Report", "NewProjects", null, new { @class = "btn btn-primary", @style = "color:white" })
         </div>
     </div>
 </div>
 
-<p>    
+<p>
     @Html.ActionLink("Create New", "Create")
     @using (Html.BeginForm("Index", "NewProjects", FormMethod.Get))
     {
@@ -56,7 +58,7 @@
 
         @foreach (var item in Model)
         {
-            <tr>                
+            <tr>
 
                 <td>
                     @Html.DisplayFor(modelItem => item.ProjectName)
@@ -84,3 +86,8 @@
 
     </table>
 
+    <br />
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+        new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
