@@ -43,7 +43,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.CommencedOn, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.CommencedOn, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.CommencedOn, new { htmlAttributes = new {@class = "form-control datecontrol", @PlaceHolder = "Enter CommencedOn Date"}})
                 @Html.ValidationMessageFor(model => model.CommencedOn, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -51,7 +51,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.ConcludedOn, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.ConcludedOn, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.ConcludedOn, new { htmlAttributes = new { @class = "form-control datecontrol", @PlaceHolder = "Enter Concludedon Date" } })
                 @Html.ValidationMessageFor(model => model.ConcludedOn, "", new { @class = "text-danger" })
             </div>
         </div>

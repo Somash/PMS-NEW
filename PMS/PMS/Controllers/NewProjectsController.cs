@@ -1,16 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using PMS.Models.DbModels;
 using PMS.Helpers;
 using Rotativa;
-using System.Drawing;
 using Rotativa.Options;
 using System.IO;
 using PagedList;
@@ -34,12 +31,6 @@ namespace PMS.Controllers
             CityLst.AddRange(CityQry.Distinct());
 
             ViewBag.searchCity = new SelectList(CityLst);
-
-            //var newProjects = db.NewProjects.Include(n => n.Application).Include(n => n.Architect).Include(n => n.BusinessPartner).Include(n => n.FixingType).Include(n => n.Owner).Include(n => n.ProjectType);
-
-            //var searchString = from m in db.NewProjects
-            //                   select m;
-
             var searchString = db.NewProjects.OrderByDescending(r => r.Id).Skip((PageNumber - 1) * PageSize).Take(PageSize).AsQueryable();
 
             if (!String.IsNullOrEmpty(searchProject))

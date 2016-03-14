@@ -93,7 +93,7 @@ namespace PMS.Models.DbModels
         public string InteriorUrl { get; set; }
 
         [Required]
-        [Display(Name = "Owners")]        
+        [Display(Name = "Owner")]        
         public int OwnerId { get; set; }
 
         [Required]
@@ -129,13 +129,9 @@ namespace PMS.Models.DbModels
 
         public virtual ProjectType ProjectType { get; set; }
 
-        //public string city { get; set; }
+
     }
 
-    //public class NewProjectDBContext : DbContext
-    //{
-    //    public DbSet<NewProject> NewProject { get; set; }
 
-    //}
 
 }
