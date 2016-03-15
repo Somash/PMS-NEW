@@ -1938,7 +1938,7 @@ textarea.form-control {
 }
 
 .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 25px;
 }
 
 .radio,
@@ -2181,7 +2181,7 @@ textarea.input-lg {
 
 @media (min-width: 768px) {
     .form-horizontal .control-label {
-        text-align: right;
+        text-align: start;
     }
 }
 
@@ -5149,7 +5149,7 @@ a.list-group-item.active > .badge,
     font-weight: 200;
     line-height: 2.1428571435;
     color: inherit;
-    background-color: #eeeeee;
+    background-color: #87CEFA;
 }
 
     .jumbotron h1 {

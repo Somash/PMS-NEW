@@ -56,7 +56,14 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ActionPlanReportUrl)
+            @if (!String.IsNullOrEmpty(Model.ActionPlanReportUrl))
+            {
+                @Html.ActionLink("ActionPlan", "Download", new { filepath = Model.ActionPlanReportUrl })
+            }
+            else
+            {
+                @Html.DisplayFor(model => model.ActionPlanReportUrl)
+            }
         </dd>
 
         <dt>
@@ -80,7 +87,14 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ProjectPictures)
+            @if (!String.IsNullOrEmpty(Model.ProjectPictures))
+            {
+                @Html.ActionLink("ProjectPictures", "Download", new { filepath = Model.ProjectPictures })
+            }
+            else
+            {
+                @Html.DisplayFor(model => model.ProjectPictures)
+            }
         </dd>
 
     </dl>

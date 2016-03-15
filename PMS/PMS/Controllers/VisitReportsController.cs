@@ -8,6 +8,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using PMS.Models.DbModels;
+using System.IO;
 
 namespace PMS.Controllers
 {
@@ -129,6 +130,18 @@ namespace PMS.Controllers
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
+
+        public ActionResult Download(string filepath)
+        {
+            if (System.IO.File.Exists(filepath))
+            {
+                byte[] fileBytes = System.IO.File.ReadAllBytes(filepath);
+                string filename = Path.GetFileName(filepath);
+                return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, filename);
+            }
+            return null;
+        }
+
 
         protected override void Dispose(bool disposing)
         {
