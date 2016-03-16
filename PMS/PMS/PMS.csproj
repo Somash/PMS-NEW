@@ -210,6 +210,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\Utilities.cs" />
+    <Compile Include="Migrations\201603160504346_InitialMigrations.cs" />
+    <Compile Include="Migrations\201603160504346_InitialMigrations.Designer.cs">
+      <DependentUpon>201603160504346_InitialMigrations.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\DbModels\Application.cs" />
@@ -467,6 +471,7 @@
     <Content Include="Scripts\DatePickerReady.js" />
     <Content Include="Scripts\jquery-2.2.1.min.map" />
     <None Include="Properties\PublishProfiles\PMS.pubxml" />
+    <None Include="Properties\PublishProfiles\PMSTest.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -636,6 +641,9 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Migrations\201603160504346_InitialMigrations.resx">
+      <DependentUpon>201603160504346_InitialMigrations.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Report\NewProjectRdtReport.rdlc" />
   </ItemGroup>
   <ItemGroup>

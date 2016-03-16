@@ -18,6 +18,11 @@ namespace PMS
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
 
+        public static void RegisterGlobalFilters(GlobalFilterCollection filters)
+        {
+            filters.Add(new HandleErrorAttribute());
+        }
+
       
     }
 }

@@ -220,3 +220,5 @@ C:\Users\ashwin.sriram\GNS3\projects\PMS-NEW\PMS\PMS\bin\PagedList.Mvc.dll
 C:\Users\ashwin.sriram\GNS3\projects\PMS-NEW\PMS\PMS\bin\PagedList.xml
 C:\Users\ashwin.sriram\GNS3\projects\PMS-NEW\PMS\PMS\bin\PagedList.Mvc.xml
 C:\Users\ashwin.sriram\GNS3\projects\PMS-NEW\PMS\PMS\obj\Debug\PMS.csprojResolveAssemblyReference.cache
+C:\Users\ashwin.sriram\GNS3\projects\PMS-NEW\PMS\PMS\obj\Debug\PMS.Migrations.InitialMigrations.resources
+C:\Users\ashwin.sriram\GNS3\projects\PMS-NEW\PMS\PMS\obj\Debug\PMS.csproj.GenerateResource.Cache
