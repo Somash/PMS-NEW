@@ -76,7 +76,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.VisitedBy, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.VisitedBy, new { htmlAttributes = new { @class = "form-control", @Value = Environment.UserName } })
+                @Html.EditorFor(model => model.VisitedBy, new { htmlAttributes = new { @class = "form-control", @Value = User.Identity.Name } })
                 @Html.ValidationMessageFor(model => model.VisitedBy, "", new { @class = "text-danger" })
             </div>
         </div>

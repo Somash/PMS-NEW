@@ -210,9 +210,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\Utilities.cs" />
-    <Compile Include="Migrations\201603160504346_InitialMigrations.cs" />
-    <Compile Include="Migrations\201603160504346_InitialMigrations.Designer.cs">
-      <DependentUpon>201603160504346_InitialMigrations.cs</DependentUpon>
+    <Compile Include="Migrations\201603170931369_ApplicationDbContext.cs" />
+    <Compile Include="Migrations\201603170931369_ApplicationDbContext.Designer.cs">
+      <DependentUpon>201603170931369_ApplicationDbContext.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -641,8 +641,8 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201603160504346_InitialMigrations.resx">
-      <DependentUpon>201603160504346_InitialMigrations.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201603170931369_ApplicationDbContext.resx">
+      <DependentUpon>201603170931369_ApplicationDbContext.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\NewProjectRdtReport.rdlc" />
   </ItemGroup>
