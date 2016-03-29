@@ -20,271 +20,277 @@
     <h4>@Model.ProjectName Project Details</h4>
     <hr />
 
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ProjectName)
-        </dt>
+    <div class="row">
+        <div class="col-md-6">
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.ProjectName)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.ProjectName)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.City)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.City)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.ProjectName)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Street)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.City)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Street)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.City)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Application.Name)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Street)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Application.Name)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Street)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Architect.FullName)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Application.Name)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Architect.FullName)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Application.Name)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.BusinessPartner.FullName)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Architect.FullName)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.BusinessPartner.FullName)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Architect.FullName)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.FixingType.Name)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.BusinessPartner.FullName)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.FixingType.Name)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.BusinessPartner.FullName)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Owner.FullName)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.FixingType.Name)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Owner.FullName)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.FixingType.Name)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.ProjectType.Name)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Owner.FullName)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.ProjectType.Name)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Owner.FullName)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.CommencedOn)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ProjectType.Name)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.CommencedOn)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.ProjectType.Name)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.ConcludedOn)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CommencedOn)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CommencedOn)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ConcludedOn)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ConcludedOn)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PlanUrl)
-        </dt>
-
-        <dd>
-            @if (!String.IsNullOrEmpty(Model.PlanUrl))
-            {
-                @Html.ActionLink("PlanDiagram", "Download", new { filepath = Model.PlanUrl })
-            }
-            else
-            {
-                @Html.DisplayFor(model => model.PlanUrl)
-            }
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.SectionsUrl)
-        </dt>
-        <dd>
-            @if (!String.IsNullOrEmpty(Model.SectionsUrl))
-            {
-                @Html.ActionLink("SectionsDiagram", "Download", new { filepath = Model.SectionsUrl })
-            }
-            else
-            {
-                @Html.DisplayFor(model => model.SectionsUrl)
-            }
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ElevationsUrl)
-        </dt>
-
-        <dd>
-            @if (!String.IsNullOrEmpty(Model.ElevationsUrl))
-            {
-                @Html.ActionLink("ElevationsDiagram", "Download", new { filepath = Model.ElevationsUrl })
-            }
-            else
-            {
-                @Html.DisplayFor(model => model.ElevationsUrl)
-            }
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TDImageUrl)
-        </dt>
-        <dd>
-            @if (!String.IsNullOrEmpty(Model.TDImageUrl))
-            {
-                @Html.ActionLink("3DImageDiagram", "Download", new { filepath = Model.TDImageUrl })
-            }
-            else
-            {
-                @Html.DisplayFor(model => model.TDImageUrl)
-            }
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AreaPanelCalculationUrl)
-        </dt>
-
-        <dd>
-            @if (!String.IsNullOrEmpty(Model.AreaPanelCalculationUrl))
-            {
-                @Html.ActionLink("AreaPanelCalc.Diagram", "Download", new { filepath = Model.AreaPanelCalculationUrl })
-            }
-            else
-            {
-                @Html.DisplayFor(model => model.AreaPanelCalculationUrl)
-            }
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ConceptsDrawingUrl)
-        </dt>
-
-        <dd>
-            @if (!String.IsNullOrEmpty(Model.ConceptsDrawingUrl))
-            {
-                @Html.ActionLink("ConceptsDiagram", "Download", new { filepath = Model.ConceptsDrawingUrl })
-            }
-            else
-            {
-                @Html.DisplayFor(model => model.ConceptsDrawingUrl)
-            }
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.OptimizationUrl)
-        </dt>
-
-        <dd>
-            @if (!String.IsNullOrEmpty(Model.OptimizationUrl))
-            {
-                @Html.ActionLink("OptimizationDiagram", "Download", new { filepath = Model.OptimizationUrl })
-            }
-            else
-            {
-                @Html.DisplayFor(model => model.OptimizationUrl)
-            }
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ShopDrawingUrl)
-        </dt>
-
-        <dd>
-            @if (!String.IsNullOrEmpty(Model.ShopDrawingUrl))
-            {
-                @Html.ActionLink("ShopDiagram", "Download", new { filepath = Model.ShopDrawingUrl })
-            }
-            else
-            {
-                @Html.DisplayFor(model => model.ShopDrawingUrl)
-            }
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AnalysisUrl)
-        </dt>
-
-        <dd>
-            @if (!String.IsNullOrEmpty(Model.AnalysisUrl))
-            {
-                @Html.ActionLink("AnalysisDiagram", "Download", new { filepath = Model.AnalysisUrl })
-            }
-            else
-            {
-                @Html.DisplayFor(model => model.AnalysisUrl)
-            }
-
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.BOQUrl)
-        </dt>
-
-        <dd>
-            @if (!String.IsNullOrEmpty(Model.BOQUrl))
-            {
-                @Html.ActionLink("BOQDiagram", "Download", new { filepath = Model.BOQUrl })
-            }
-            else
-            {
-                @Html.DisplayFor(model => model.BOQUrl)
-            }
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.InteriorUrl)
-        </dt>
-        <dd>
-            @if (!String.IsNullOrEmpty(Model.InteriorUrl))
-            {
-                @Html.ActionLink("InteriorDiagram", "Download", new { filepath = Model.InteriorUrl })
-            }
-            else
-            {
-                @Html.DisplayFor(model => model.InteriorUrl)
-            }
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TDRenderImageUrl)
-        </dt>
-        <dd>
-            @if (!String.IsNullOrEmpty(Model.TDRenderImageUrl))
-            {
-                @Html.ActionLink("3DRenderDiagram", "Download", new { filepath = Model.TDRenderImageUrl })
-            }
-            else
-            {
-                @Html.DisplayFor(model => model.TDRenderImageUrl)
-            }
-        </dd>
-    </dl>
-</div>
+                <dd>
+                    @Html.DisplayFor(model => model.ConcludedOn)
+                </dd>
+            </dl>
+        </div>
+        </div>
 
 
+    <div class="row">
+        <div class="col-md-6">
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.PlanUrl)
+                </dt>
+
+                <dd>
+                    @if (!String.IsNullOrEmpty(Model.PlanUrl))
+                    {
+                    @Html.ActionLink("PlanDiagram", "Download", new { filepath = Model.PlanUrl })
+                    }
+                    else
+                    {
+                    @Html.DisplayFor(model => model.PlanUrl)
+                    }
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.SectionsUrl)
+                </dt>
+                <dd>
+                    @if (!String.IsNullOrEmpty(Model.SectionsUrl))
+                    {
+                    @Html.ActionLink("SectionsDiagram", "Download", new { filepath = Model.SectionsUrl })
+                    }
+                    else
+                    {
+                    @Html.DisplayFor(model => model.SectionsUrl)
+                    }
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ElevationsUrl)
+                </dt>
+
+                <dd>
+                    @if (!String.IsNullOrEmpty(Model.ElevationsUrl))
+                    {
+                    @Html.ActionLink("ElevationsDiagram", "Download", new { filepath = Model.ElevationsUrl })
+                    }
+                    else
+                    {
+                    @Html.DisplayFor(model => model.ElevationsUrl)
+                    }
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.TDImageUrl)
+                </dt>
+                <dd>
+                    @if (!String.IsNullOrEmpty(Model.TDImageUrl))
+                    {
+                    @Html.ActionLink("3DImageDiagram", "Download", new { filepath = Model.TDImageUrl })
+                    }
+                    else
+                    {
+                    @Html.DisplayFor(model => model.TDImageUrl)
+                    }
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.AreaPanelCalculationUrl)
+                </dt>
+
+                <dd>
+                    @if (!String.IsNullOrEmpty(Model.AreaPanelCalculationUrl))
+                    {
+                    @Html.ActionLink("AreaPanelCalc.Diagram", "Download", new { filepath = Model.AreaPanelCalculationUrl })
+                    }
+                    else
+                    {
+                    @Html.DisplayFor(model => model.AreaPanelCalculationUrl)
+                    }
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ConceptsDrawingUrl)
+                </dt>
+
+                <dd>
+                    @if (!String.IsNullOrEmpty(Model.ConceptsDrawingUrl))
+                    {
+                    @Html.ActionLink("ConceptsDiagram", "Download", new { filepath = Model.ConceptsDrawingUrl })
+                    }
+                    else
+                    {
+                    @Html.DisplayFor(model => model.ConceptsDrawingUrl)
+                    }
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.OptimizationUrl)
+                </dt>
+
+                <dd>
+                    @if (!String.IsNullOrEmpty(Model.OptimizationUrl))
+                    {
+                    @Html.ActionLink("OptimizationDiagram", "Download", new { filepath = Model.OptimizationUrl })
+                    }
+                    else
+                    {
+                    @Html.DisplayFor(model => model.OptimizationUrl)
+                    }
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ShopDrawingUrl)
+                </dt>
+
+                <dd>
+                    @if (!String.IsNullOrEmpty(Model.ShopDrawingUrl))
+                    {
+                    @Html.ActionLink("ShopDiagram", "Download", new { filepath = Model.ShopDrawingUrl })
+                    }
+                    else
+                    {
+                    @Html.DisplayFor(model => model.ShopDrawingUrl)
+                    }
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.AnalysisUrl)
+                </dt>
+
+                <dd>
+                    @if (!String.IsNullOrEmpty(Model.AnalysisUrl))
+                    {
+                    @Html.ActionLink("AnalysisDiagram", "Download", new { filepath = Model.AnalysisUrl })
+                    }
+                    else
+                    {
+                    @Html.DisplayFor(model => model.AnalysisUrl)
+                    }
+
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.BOQUrl)
+                </dt>
+
+                <dd>
+                    @if (!String.IsNullOrEmpty(Model.BOQUrl))
+                    {
+                    @Html.ActionLink("BOQDiagram", "Download", new { filepath = Model.BOQUrl })
+                    }
+                    else
+                    {
+                    @Html.DisplayFor(model => model.BOQUrl)
+                    }
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.InteriorUrl)
+                </dt>
+                <dd>
+                    @if (!String.IsNullOrEmpty(Model.InteriorUrl))
+                    {
+                    @Html.ActionLink("InteriorDiagram", "Download", new { filepath = Model.InteriorUrl })
+                    }
+                    else
+                    {
+                    @Html.DisplayFor(model => model.InteriorUrl)
+                    }
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.TDRenderImageUrl)
+                </dt>
+                <dd>
+                    @if (!String.IsNullOrEmpty(Model.TDRenderImageUrl))
+                    {
+                    @Html.ActionLink("3DRenderDiagram", "Download", new { filepath = Model.TDRenderImageUrl })
+                    }
+                    else
+                    {
+                    @Html.DisplayFor(model => model.TDRenderImageUrl)
+                    }
+                </dd>
+            </dl>
+        </div>
+    </div>
+    </div>
 

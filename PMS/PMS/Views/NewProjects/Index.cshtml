@@ -14,6 +14,7 @@
     <div class=" col-xs-12">
         <div class="pull-right">
             @Html.ActionLink("Report PDF", "Report", "NewProjects", null, new { @class = "btn btn-primary", @style = "color:white" })
+            @Html.ActionLink("Export to Excel", "ExporttoExcel", "NewProjects", null, new { @class = "btn btn-primary", @style = "color:white" })
         </div>
     </div>
 </div>
@@ -29,26 +30,36 @@
     </p>
     }
 
+@*Project Type is renamed to Project Status,
+Street is renamed to Area,
+Commenced on to Enquiry date,
+Concludedon to Comments,*@
+
+
     <table class="table">
         <tr>
             <th>
-                @Html.DisplayName("Project Name")
+                @Html.ActionLink("Project Name", "Index", new { sortOrder = ViewBag.NameSortParm})
             </th>
 
             <th>
-                @Html.DisplayName("Owner")
+                @Html.ActionLink("Owner", "Index", new { sortOrder = ViewBag.OwnerSortParm})
             </th>
 
             <th>
-                @Html.DisplayName("City")
+                @Html.ActionLink("City", "Index", new { sortOrder = ViewBag.CitySortParm })
             </th>
 
             <th>
-                @Html.DisplayName("CommencedOn")
+                @Html.ActionLink("EnquiryOn", "Index", new { sortOrder = ViewBag.EnquiryOnParm})
             </th>
 
             <th>
-                @Html.DisplayName("BusinessPartner")
+                @Html.ActionLink("BusinessPartner", "Index", new {sortOrder = ViewBag.BusinessPartnerParm })
+            </th>
+
+            <th>
+                @Html.ActionLink("Area", "Index", new { sortOrder = ViewBag.Street })
             </th>
 
             <th></th>
@@ -72,6 +83,9 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.BusinessPartner.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Street)
                 </td>
 
                 <td>

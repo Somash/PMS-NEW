@@ -22,10 +22,12 @@ namespace PMS.Models.DbModels
         [Display(Name = "Architect Name")]
         public string FullName { get; set; }
 
-        
+        [Required]
+        [Display(Name = "City")]
         public string City { get; set; }
 
-       
+        [Required]
+        [Display(Name = "Address")]
         public string Address { get; set; }
 
         

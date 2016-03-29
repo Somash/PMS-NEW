@@ -26,21 +26,20 @@ namespace PMS.Models.DbModels
         [Required]
         [Display(Name = "City")]
         public string City { get; set; }
-
+        
         [Required]
-        [Display(Name = "Street")]
-
+        [Range(0, double.MaxValue, ErrorMessage = "Please enter only Number")]
+        [Display(Name = "Area")]
         public string Street { get; set; }
 
         [Required]
-        [Display(Name = "CommencedOn")]
+        [Display(Name = "EnquiryOn")]
         [DataType(DataType.Date)]
         public DateTime CommencedOn { get; set; }
 
-        [Required]
-        [Display(Name = "ConcludedOn")]
-        [DataType(DataType.Date)]
-        public DateTime ConcludedOn { get; set; }
+        [DataType(DataType.MultilineText)]
+        [Display(Name = "Comments")]        
+        public string ConcludedOn { get; set; }
 
         [Display(Name = "Architect")]
         public int ArchitectId { get; set; }
@@ -97,7 +96,7 @@ namespace PMS.Models.DbModels
         public int OwnerId { get; set; }
 
         [Required]
-        [Display(Name = "Project Type")]
+        [Display(Name = "Project Status")]
         public int ProjectTypeId { get; set; }
 
         [Required]

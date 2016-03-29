@@ -11,6 +11,8 @@ using Rotativa;
 using Rotativa.Options;
 using System.IO;
 using PagedList;
+using System.Web;
+using System.Web.UI;
 namespace PMS.Controllers
 {
     [Authorize]
@@ -19,11 +21,16 @@ namespace PMS.Controllers
         private Entities db = new Entities();
 
         // GET: NewProjects
-        public ViewResult Index(string searchProject, String searchCity, int PageNumber = 1, int PageSize = 15)
+
+        public ViewResult Index(string sortOrder, string searchProject, String searchCity, int PageNumber = 1, int PageSize = 15)
         {
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.OwnerSortParm = String.IsNullOrEmpty(sortOrder) ? "owner_desc" : "";
+            ViewBag.CitySortParm = String.IsNullOrEmpty(sortOrder) ? "city_desc" : "";
+            ViewBag.EnquiryOnSortParm = sortOrder == "Date" ? "EnquiryOn" : "Date";
+            ViewBag.BusinessPartnerParm = String.IsNullOrEmpty(sortOrder) ? "BusinessPartner_desc" : "";
 
             var CityLst = new List<string>();
-
             var CityQry = from d in db.NewProjects
                           orderby d.City
                           select d.City;
@@ -31,6 +38,7 @@ namespace PMS.Controllers
             CityLst.AddRange(CityQry.Distinct());
 
             ViewBag.searchCity = new SelectList(CityLst);
+
             var searchString = db.NewProjects.OrderByDescending(r => r.Id).Skip((PageNumber - 1) * PageSize).Take(PageSize).AsQueryable();
 
             if (!String.IsNullOrEmpty(searchProject))
@@ -41,10 +49,40 @@ namespace PMS.Controllers
             if (!string.IsNullOrEmpty(searchCity))
             {
                 searchString = searchString.Where(x => x.City == searchCity);
-            }
+            }     
+
+            var ListProjects = from p in db.NewProjects
+                               select p;
+
+            switch (sortOrder)
+            { 
+                case "name_desc":
+                    searchString = searchString.OrderByDescending(s => s.ProjectName);
+                    break;
+
+                case "owner_desc":
+                    searchString = searchString.OrderByDescending(s => s.Owner);
+                    break;
+
+                case "city_desc":
+                    searchString = searchString.OrderByDescending(s => s.City);
+                    break;
+
+                case "EnquiryOn_desc":
+                    searchString = searchString.OrderByDescending(s => s.CommencedOn);
+                    break;
+
+                case "BusinessPartner_desc":
+                    searchString = searchString.OrderByDescending(s => s.BusinessPartner);
+                    break;          
+  
+                 default:
+                    searchString = searchString.OrderBy(s => s.ProjectName);
+                    break;
+            }           
             return View(searchString.ToPagedList(PageNumber, PageSize));
         }
-
+        
         // GET: NewProjects/Details/5
         public async Task<ActionResult> Details(int? id)
         {
@@ -184,7 +222,7 @@ namespace PMS.Controllers
             return new ViewAsPdf(Model)
             {
                 FileName = "AllProject.pdf",
-                CustomSwitches = "--print-media-type --header-center \"MYTEXT\"",
+                CustomSwitches = "--print-media-type --header-center \"Project Details\"",
                 PageSize = Rotativa.Options.Size.A4,
                 PageOrientation = Orientation.Portrait,
                 PageMargins = { Left = 10, Right = 10 }
@@ -203,17 +241,17 @@ namespace PMS.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.logoPath = "~/Content/logo.png";
+            ViewBag.logoPath = "~/Content/logo.png";         
             return new ViewAsPdf(newProject)
             {
-                FileName = "AllProject.pdf",
+                FileName = "ProjectInfo.pdf",
                 PageOrientation = Rotativa.Options.Orientation.Portrait,
                 PageSize = Rotativa.Options.Size.A4,
                 //CustomSwitches = "--print-media-type --header-center \"Project Information\"",
                 CustomSwitches = "--footer-center \"Name: " + "Project Information of: " + newProject.ProjectName + "  DOS: " + DateTime.Now.Date.ToString("MM/dd/yyyy") + "  Page: [page]/[toPage]\"" + " --footer-line --footer-font-size \"9\" --footer-spacing 6 --footer-font-name \"calibri light\""
             };
         }
-
+               
         public ActionResult Download(string filepath)
         {
             if (System.IO.File.Exists(filepath))

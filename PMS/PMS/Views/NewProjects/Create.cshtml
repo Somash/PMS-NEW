@@ -41,21 +41,13 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.CommencedOn, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.CommencedOn,"EnquiryOn", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.CommencedOn, new { htmlAttributes = new { @class = "form-control datecontrol", @PlaceHolder = "Enter CommencedOn Date" } })
+                @Html.EditorFor(model => model.CommencedOn, new { htmlAttributes = new { @class = "form-control datecontrol", @PlaceHolder = "Enter EnquiryOn Date" } })
                 @Html.ValidationMessageFor(model => model.CommencedOn, "", new { @class = "text-danger" })
             </div>
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ConcludedOn, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ConcludedOn, new { htmlAttributes = new { @class = "form-control datecontrol", @PlaceHolder = "Enter Concludedon Date" } })
-                @Html.ValidationMessageFor(model => model.ConcludedOn, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
+            
         @*<div class="form-group">
                 @Html.LabelFor(model => model.ArchitectId, "Architect", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -85,14 +77,6 @@
             <div class="col-md-10">
                 @Html.DropDownList("OwnerId", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.OwnerId, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ProjectTypeId, "ProjectType", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("ProjectTypeId", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.ProjectTypeId, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -207,6 +191,22 @@
             <div class="col-md-10">
                 @Html.EditorFor(model => model.TDRenderImageUrl, new { htmlAttributes = new { @class = "form-control", type = "file" } })
                 @Html.ValidationMessageFor(model => model.TDRenderImageUrl, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ProjectTypeId, "ProjectType", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("ProjectTypeId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ProjectTypeId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ConcludedOn, "Comments", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ConcludedOn, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ConcludedOn, "", new { @class = "text-danger" })
             </div>
         </div>
 
