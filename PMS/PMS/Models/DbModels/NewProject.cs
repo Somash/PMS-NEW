@@ -29,11 +29,11 @@ namespace PMS.Models.DbModels
         
         [Required]
         [Range(0, double.MaxValue, ErrorMessage = "Please enter only Number")]
-        [Display(Name = "Area")]
+        [Display(Name = "Area(Sq.Mt)")]
         public string Street { get; set; }
 
         [Required]
-        [Display(Name = "EnquiryOn")]
+        [Display(Name = "DateOfEnquiry")]
         [DataType(DataType.Date)]
         public DateTime CommencedOn { get; set; }
 

@@ -13,6 +13,7 @@ using System.IO;
 using PagedList;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.WebControls;
 namespace PMS.Controllers
 {
     [Authorize]
@@ -142,6 +143,9 @@ namespace PMS.Controllers
             ViewBag.FixingTypeId = new SelectList(db.FixingTypes, "Id", "Name", newProject.FixingTypeId);
             ViewBag.OwnerId = new SelectList(db.Owners, "Id", "FullName", newProject.OwnerId);
             ViewBag.ProjectTypeId = new SelectList(db.ProjectTypes, "Id", "Name", newProject.ProjectTypeId);
+
+
+
             return View(newProject);
         }
 
@@ -224,7 +228,7 @@ namespace PMS.Controllers
                 FileName = "AllProject.pdf",
                 CustomSwitches = "--print-media-type --header-center \"Project Details\"",
                 PageSize = Rotativa.Options.Size.A4,
-                PageOrientation = Orientation.Portrait,
+                PageOrientation = Rotativa.Options.Orientation.Portrait,
                 PageMargins = { Left = 10, Right = 10 }
 
             };
@@ -251,6 +255,30 @@ namespace PMS.Controllers
                 CustomSwitches = "--footer-center \"Name: " + "Project Information of: " + newProject.ProjectName + "  DOS: " + DateTime.Now.Date.ToString("MM/dd/yyyy") + "  Page: [page]/[toPage]\"" + " --footer-line --footer-font-size \"9\" --footer-spacing 6 --footer-font-name \"calibri light\""
             };
         }
+
+        public ActionResult ExporttoExcel()
+        {
+            GridView gv = new GridView();            
+            //gv.DataSource = db.NewProjects.ToList();
+            gv.DataSource = db.NewProjects.Select(p => new { Name = p.ProjectName, City = p.City, Area = p.Street, 
+                DateofEnquiry = p.CommencedOn, ProjectStatus = p.ProjectType.Name, Architect = p.Architect.FullName, 
+                FBP = p.BusinessPartner.FullName, Owner = p.Owner.FullName, FixingType = p.FixingType.Name, 
+                Application = p.Application.Name}).ToList();
+            
+            gv.DataBind();
+            Response.ClearContent();
+            Response.Buffer = true;
+            Response.AddHeader("content-disposition", "attachment; filename= ProjectList.xls");
+            Response.Charset = "";
+            StringWriter sw = new StringWriter();
+            HtmlTextWriter htw = new HtmlTextWriter(sw);
+            gv.RenderControl(htw);
+            Response.Output.Write(sw.ToString());
+            Response.Flush();
+            Response.End();
+            return RedirectToAction("Index");        
+        }
+
                
         public ActionResult Download(string filepath)
         {
