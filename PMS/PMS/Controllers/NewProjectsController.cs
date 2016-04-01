@@ -50,13 +50,13 @@ namespace PMS.Controllers
             if (!string.IsNullOrEmpty(searchCity))
             {
                 searchString = searchString.Where(x => x.City == searchCity);
-            }     
+            }
 
             var ListProjects = from p in db.NewProjects
                                select p;
 
             switch (sortOrder)
-            { 
+            {
                 case "name_desc":
                     searchString = searchString.OrderByDescending(s => s.ProjectName);
                     break;
@@ -75,15 +75,15 @@ namespace PMS.Controllers
 
                 case "BusinessPartner_desc":
                     searchString = searchString.OrderByDescending(s => s.BusinessPartner);
-                    break;          
-  
-                 default:
+                    break;
+
+                default:
                     searchString = searchString.OrderBy(s => s.ProjectName);
                     break;
-            }           
+            }
             return View(searchString.ToPagedList(PageNumber, PageSize));
         }
-        
+
         // GET: NewProjects/Details/5
         public async Task<ActionResult> Details(int? id)
         {
@@ -179,6 +179,18 @@ namespace PMS.Controllers
         {
             if (ModelState.IsValid)
             {
+                newProject.AnalysisUrl = Request.Files["AnalysisUrl"] != null ? Utilities.saveFile(Request.Files["AnalysisUrl"], newProject.ProjectName + "\\Analysis") : newProject.AnalysisUrl;
+                newProject.AreaPanelCalculationUrl = Request.Files["AreaPanelCalculationUrl"] != null ? Utilities.saveFile(Request.Files["AreaPanelCalculationUrl"], newProject.ProjectName + "\\AreaPanelCalculation") : newProject.AreaPanelCalculationUrl;
+                newProject.BOQUrl = Request.Files["BOQUrl"] != null ? Utilities.saveFile(Request.Files["BOQUrl"], newProject.ProjectName + "\\BOQ") : newProject.BOQUrl;
+                newProject.ConceptsDrawingUrl = Request.Files["ConceptsDrawingUrl"] != null ? Utilities.saveFile(Request.Files["ConceptsDrawingUrl"], newProject.ProjectName + "\\ConceptsDrawing") : newProject.ConceptsDrawingUrl;
+                newProject.ElevationsUrl = Request.Files["ElevationsUrl"] != null ? Utilities.saveFile(Request.Files["ElevationsUrl"], newProject.ProjectName + "\\Elevations") : newProject.ElevationsUrl;
+                newProject.InteriorUrl = Request.Files["InteriorUrl"] != null ? Utilities.saveFile(Request.Files["InteriorUrl"], newProject.ProjectName + "\\Interior") : newProject.InteriorUrl;
+                newProject.OptimizationUrl = Request.Files["OptimizationUrl"] != null ? Utilities.saveFile(Request.Files["OptimizationUrl"], newProject.ProjectName + "\\Optimization") : newProject.OptimizationUrl;
+                newProject.PlanUrl = Request.Files["PlanUrl"] != null ? Utilities.saveFile(Request.Files["PlanUrl"], newProject.ProjectName + "\\Plan") : newProject.PlanUrl;
+                newProject.SectionsUrl = Request.Files["SectionsUrl"] != null ? Utilities.saveFile(Request.Files["SectionsUrl"], newProject.ProjectName + "\\Sections") : newProject.SectionsUrl;
+                newProject.ShopDrawingUrl = Request.Files["ShopDrawingUrl"] != null ? Utilities.saveFile(Request.Files["ShopDrawingUrl"], newProject.ProjectName + "\\ShopDrawing") : newProject.ShopDrawingUrl;
+                newProject.TDImageUrl = Request.Files["TDImageUrl"] != null ? Utilities.saveFile(Request.Files["TDImageUrl"], newProject.ProjectName + "\\TDImage") : newProject.TDImageUrl;
+                newProject.TDRenderImageUrl = Request.Files["TDRenderImageUrl"] != null ? Utilities.saveFile(Request.Files["TDRenderImageUrl"], newProject.ProjectName + "\\TDRenderImage") : newProject.TDRenderImageUrl;
                 db.Entry(newProject).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
@@ -245,7 +257,7 @@ namespace PMS.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.logoPath = "~/Content/logo.png";         
+            ViewBag.logoPath = "~/Content/logo.png";
             return new ViewAsPdf(newProject)
             {
                 FileName = "ProjectInfo.pdf",
@@ -258,13 +270,22 @@ namespace PMS.Controllers
 
         public ActionResult ExporttoExcel()
         {
-            GridView gv = new GridView();            
+            GridView gv = new GridView();
             //gv.DataSource = db.NewProjects.ToList();
-            gv.DataSource = db.NewProjects.Select(p => new { Name = p.ProjectName, City = p.City, Area = p.Street, 
-                DateofEnquiry = p.CommencedOn, ProjectStatus = p.ProjectType.Name, Architect = p.Architect.FullName, 
-                FBP = p.BusinessPartner.FullName, Owner = p.Owner.FullName, FixingType = p.FixingType.Name, 
-                Application = p.Application.Name}).ToList();
-            
+            gv.DataSource = db.NewProjects.Select(p => new
+            {
+                Name = p.ProjectName,
+                City = p.City,
+                Area = p.Street,
+                DateofEnquiry = p.CommencedOn,
+                ProjectStatus = p.ProjectType.Name,
+                Architect = p.Architect.FullName,
+                FBP = p.BusinessPartner.FullName,
+                Owner = p.Owner.FullName,
+                FixingType = p.FixingType.Name,
+                Application = p.Application.Name
+            }).ToList();
+
             gv.DataBind();
             Response.ClearContent();
             Response.Buffer = true;
@@ -276,10 +297,10 @@ namespace PMS.Controllers
             Response.Output.Write(sw.ToString());
             Response.Flush();
             Response.End();
-            return RedirectToAction("Index");        
+            return RedirectToAction("Index");
         }
 
-               
+
         public ActionResult Download(string filepath)
         {
             if (System.IO.File.Exists(filepath))
