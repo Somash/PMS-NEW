@@ -25,23 +25,14 @@ namespace PMS.Controllers
 
         public ViewResult Index(string sortOrder, string searchProject, String searchCity, int PageNumber = 1, int PageSize = 15)
         {
-            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
-            ViewBag.OwnerSortParm = String.IsNullOrEmpty(sortOrder) ? "owner_desc" : "";
-            ViewBag.CitySortParm = String.IsNullOrEmpty(sortOrder) ? "city_desc" : "";
-            ViewBag.EnquiryOnSortParm = sortOrder == "Date" ? "EnquiryOn" : "Date";
-            ViewBag.BusinessPartnerParm = String.IsNullOrEmpty(sortOrder) ? "BusinessPartner_desc" : "";
-
             var CityLst = new List<string>();
             var CityQry = from d in db.NewProjects
                           orderby d.City
                           select d.City;
 
             CityLst.AddRange(CityQry.Distinct());
-
             ViewBag.searchCity = new SelectList(CityLst);
-
             var searchString = db.NewProjects.OrderByDescending(r => r.Id).Skip((PageNumber - 1) * PageSize).Take(PageSize).AsQueryable();
-
             if (!String.IsNullOrEmpty(searchProject))
             {
                 searchString = searchString.Where(s => s.ProjectName.Contains(searchProject));
@@ -50,13 +41,19 @@ namespace PMS.Controllers
             if (!string.IsNullOrEmpty(searchCity))
             {
                 searchString = searchString.Where(x => x.City == searchCity);
-            }     
+            }
 
             var ListProjects = from p in db.NewProjects
                                select p;
 
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.OwnerSortParm = String.IsNullOrEmpty(sortOrder) ? "owner_desc" : "";
+            ViewBag.CitySortParm = String.IsNullOrEmpty(sortOrder) ? "city_desc" : "";
+            ViewBag.EnquiryOnSortParm = String.IsNullOrEmpty(sortOrder) ? "EnquiryOn_desc" : "";
+            ViewBag.BusinessPartnerParm = String.IsNullOrEmpty(sortOrder) ? "BusinessPartner_desc" : "";
+
             switch (sortOrder)
-            { 
+            {
                 case "name_desc":
                     searchString = searchString.OrderByDescending(s => s.ProjectName);
                     break;
@@ -75,15 +72,15 @@ namespace PMS.Controllers
 
                 case "BusinessPartner_desc":
                     searchString = searchString.OrderByDescending(s => s.BusinessPartner);
-                    break;          
-  
-                 default:
+                    break;
+
+                default:
                     searchString = searchString.OrderBy(s => s.ProjectName);
                     break;
-            }           
+            }
             return View(searchString.ToPagedList(PageNumber, PageSize));
         }
-        
+
         // GET: NewProjects/Details/5
         public async Task<ActionResult> Details(int? id)
         {
@@ -136,16 +133,12 @@ namespace PMS.Controllers
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-
             ViewBag.ApplicationsId = new SelectList(db.Applications, "Id", "Name", newProject.ApplicationsId);
             ViewBag.ArchitectId = new SelectList(db.Architects, "Id", "FullName", newProject.ArchitectId);
             ViewBag.BusinessPartnerId = new SelectList(db.BusinessPartners, "Id", "FullName", newProject.BusinessPartnerId);
             ViewBag.FixingTypeId = new SelectList(db.FixingTypes, "Id", "Name", newProject.FixingTypeId);
             ViewBag.OwnerId = new SelectList(db.Owners, "Id", "FullName", newProject.OwnerId);
             ViewBag.ProjectTypeId = new SelectList(db.ProjectTypes, "Id", "Name", newProject.ProjectTypeId);
-
-
-
             return View(newProject);
         }
 
@@ -178,7 +171,7 @@ namespace PMS.Controllers
         public async Task<ActionResult> Edit([Bind(Include = "Id,ProjectName,City,Street,CommencedOn,ConcludedOn,ArchitectId,BusinessPartnerId,PlanUrl,SectionsUrl,ElevationsUrl,TDImageUrl,AreaPanelCalculationUrl,ConceptsDrawingUrl,OptimizationUrl,ShopDrawingUrl,AnalysisUrl,BOQUrl,InteriorUrl,OwnerId,ProjectTypeId,FixingTypeId,ApplicationsId,TDRenderImageUrl")] NewProject newProject)
         {
             if (ModelState.IsValid)
-            {
+            {             
                 db.Entry(newProject).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
@@ -245,7 +238,7 @@ namespace PMS.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.logoPath = "~/Content/logo.png";         
+            ViewBag.logoPath = "~/Content/logo.png";
             return new ViewAsPdf(newProject)
             {
                 FileName = "ProjectInfo.pdf",
@@ -258,13 +251,22 @@ namespace PMS.Controllers
 
         public ActionResult ExporttoExcel()
         {
-            GridView gv = new GridView();            
+            GridView gv = new GridView();
             //gv.DataSource = db.NewProjects.ToList();
-            gv.DataSource = db.NewProjects.Select(p => new { Name = p.ProjectName, City = p.City, Area = p.Street, 
-                DateofEnquiry = p.CommencedOn, ProjectStatus = p.ProjectType.Name, Architect = p.Architect.FullName, 
-                FBP = p.BusinessPartner.FullName, Owner = p.Owner.FullName, FixingType = p.FixingType.Name, 
-                Application = p.Application.Name}).ToList();
-            
+            gv.DataSource = db.NewProjects.Select(p => new
+            {
+                Name = p.ProjectName,
+                City = p.City,
+                Area = p.Street,
+                DateofEnquiry = p.CommencedOn,
+                ProjectStatus = p.ProjectType.Name,
+                Architect = p.Architect.FullName,
+                FBP = p.BusinessPartner.FullName,
+                Owner = p.Owner.FullName,
+                FixingType = p.FixingType.Name,
+                Application = p.Application.Name
+            }).ToList();
+
             gv.DataBind();
             Response.ClearContent();
             Response.Buffer = true;
@@ -276,10 +278,10 @@ namespace PMS.Controllers
             Response.Output.Write(sw.ToString());
             Response.Flush();
             Response.End();
-            return RedirectToAction("Index");        
+            return RedirectToAction("Index");
         }
 
-               
+
         public ActionResult Download(string filepath)
         {
             if (System.IO.File.Exists(filepath))
