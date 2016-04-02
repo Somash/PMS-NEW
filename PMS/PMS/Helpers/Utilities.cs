@@ -9,6 +9,11 @@ namespace PMS.Helpers
 {
     public static class Utilities
     {
+        public static bool isFile(HttpPostedFileBase file)
+        {
+            if (file != null && file.ContentLength > 0) return true;
+            return false;
+        }
         public static string saveFile(HttpPostedFileBase file, string Directory)
         {
             string path = String.Empty;

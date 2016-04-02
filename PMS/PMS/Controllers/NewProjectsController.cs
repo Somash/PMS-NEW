@@ -179,18 +179,18 @@ namespace PMS.Controllers
         {
             if (ModelState.IsValid)
             {
-                newProject.AnalysisUrl = Request.Files["AnalysisUrl"] != null ? Utilities.saveFile(Request.Files["AnalysisUrl"], newProject.ProjectName + "\\Analysis") : newProject.AnalysisUrl;
-                newProject.AreaPanelCalculationUrl = Request.Files["AreaPanelCalculationUrl"] != null ? Utilities.saveFile(Request.Files["AreaPanelCalculationUrl"], newProject.ProjectName + "\\AreaPanelCalculation") : newProject.AreaPanelCalculationUrl;
-                newProject.BOQUrl = Request.Files["BOQUrl"] != null ? Utilities.saveFile(Request.Files["BOQUrl"], newProject.ProjectName + "\\BOQ") : newProject.BOQUrl;
-                newProject.ConceptsDrawingUrl = Request.Files["ConceptsDrawingUrl"] != null ? Utilities.saveFile(Request.Files["ConceptsDrawingUrl"], newProject.ProjectName + "\\ConceptsDrawing") : newProject.ConceptsDrawingUrl;
-                newProject.ElevationsUrl = Request.Files["ElevationsUrl"] != null ? Utilities.saveFile(Request.Files["ElevationsUrl"], newProject.ProjectName + "\\Elevations") : newProject.ElevationsUrl;
-                newProject.InteriorUrl = Request.Files["InteriorUrl"] != null ? Utilities.saveFile(Request.Files["InteriorUrl"], newProject.ProjectName + "\\Interior") : newProject.InteriorUrl;
-                newProject.OptimizationUrl = Request.Files["OptimizationUrl"] != null ? Utilities.saveFile(Request.Files["OptimizationUrl"], newProject.ProjectName + "\\Optimization") : newProject.OptimizationUrl;
-                newProject.PlanUrl = Request.Files["PlanUrl"] != null ? Utilities.saveFile(Request.Files["PlanUrl"], newProject.ProjectName + "\\Plan") : newProject.PlanUrl;
-                newProject.SectionsUrl = Request.Files["SectionsUrl"] != null ? Utilities.saveFile(Request.Files["SectionsUrl"], newProject.ProjectName + "\\Sections") : newProject.SectionsUrl;
-                newProject.ShopDrawingUrl = Request.Files["ShopDrawingUrl"] != null ? Utilities.saveFile(Request.Files["ShopDrawingUrl"], newProject.ProjectName + "\\ShopDrawing") : newProject.ShopDrawingUrl;
-                newProject.TDImageUrl = Request.Files["TDImageUrl"] != null ? Utilities.saveFile(Request.Files["TDImageUrl"], newProject.ProjectName + "\\TDImage") : newProject.TDImageUrl;
-                newProject.TDRenderImageUrl = Request.Files["TDRenderImageUrl"] != null ? Utilities.saveFile(Request.Files["TDRenderImageUrl"], newProject.ProjectName + "\\TDRenderImage") : newProject.TDRenderImageUrl;
+                newProject.AnalysisUrl = Utilities.isFile(Request.Files["AnalysisUrl"]) ? Utilities.saveFile(Request.Files["AnalysisUrl"], newProject.ProjectName + "\\Analysis") : newProject.AnalysisUrl;
+                newProject.AreaPanelCalculationUrl = Utilities.isFile(Request.Files["AreaPanelCalculationUrl"]) ? Utilities.saveFile(Request.Files["AreaPanelCalculationUrl"], newProject.ProjectName + "\\AreaPanelCalculation") : newProject.AreaPanelCalculationUrl;
+                newProject.BOQUrl = Utilities.isFile(Request.Files["BOQUrl"]) ? Utilities.saveFile(Request.Files["BOQUrl"], newProject.ProjectName + "\\BOQ") : newProject.BOQUrl;
+                newProject.ConceptsDrawingUrl = Utilities.isFile(Request.Files["ConceptsDrawingUrl"]) ? Utilities.saveFile(Request.Files["ConceptsDrawingUrl"], newProject.ProjectName + "\\ConceptsDrawing") : newProject.ConceptsDrawingUrl;
+                newProject.ElevationsUrl = Utilities.isFile(Request.Files["ElevationsUrl"]) ? Utilities.saveFile(Request.Files["ElevationsUrl"], newProject.ProjectName + "\\Elevations") : newProject.ElevationsUrl;
+                newProject.InteriorUrl = Utilities.isFile(Request.Files["InteriorUrl"]) ? Utilities.saveFile(Request.Files["InteriorUrl"], newProject.ProjectName + "\\Interior") : newProject.InteriorUrl;
+                newProject.OptimizationUrl = Utilities.isFile(Request.Files["OptimizationUrl"]) ? Utilities.saveFile(Request.Files["OptimizationUrl"], newProject.ProjectName + "\\Optimization") : newProject.OptimizationUrl;
+                newProject.PlanUrl = Utilities.isFile(Request.Files["PlanUrl"]) ? Utilities.saveFile(Request.Files["PlanUrl"], newProject.ProjectName + "\\Plan") : newProject.PlanUrl;
+                newProject.SectionsUrl = Utilities.isFile(Request.Files["SectionsUrl"]) ? Utilities.saveFile(Request.Files["SectionsUrl"], newProject.ProjectName + "\\Sections") : newProject.SectionsUrl;
+                newProject.ShopDrawingUrl = Utilities.isFile(Request.Files["ShopDrawingUrl"]) ? Utilities.saveFile(Request.Files["ShopDrawingUrl"], newProject.ProjectName + "\\ShopDrawing") : newProject.ShopDrawingUrl;
+                newProject.TDImageUrl = Utilities.isFile(Request.Files["TDImageUrl"]) ? Utilities.saveFile(Request.Files["TDImageUrl"], newProject.ProjectName + "\\TDImage") : newProject.TDImageUrl;
+                newProject.TDRenderImageUrl = Utilities.isFile(Request.Files["TDRenderImageUrl"]) ? Utilities.saveFile(Request.Files["TDRenderImageUrl"], newProject.ProjectName + "\\TDRenderImage") : newProject.TDRenderImageUrl;
                 db.Entry(newProject).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
